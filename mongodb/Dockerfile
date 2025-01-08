@@ -3,8 +3,10 @@
 FROM ubuntu
 MAINTAINER Kimbro Staken
 
-# Ajouter gnupg et installer la clé GPG pour MongoDB
-RUN apt-get update && apt-get install -y gnupg
+# Installer gnupg et curl pour la gestion des clés et le téléchargement
+RUN apt-get update && apt-get install -y gnupg curl
+
+# Ajouter la clé GPG pour MongoDB
 RUN curl -fsSL https://pgp.mongodb.com/server-4.4.asc | gpg --dearmor -o /usr/share/keyrings/mongodb-archive-keyring.gpg
 
 # Ajouter le dépôt MongoDB
